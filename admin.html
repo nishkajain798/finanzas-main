@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+</head>
+<body>
+  <h2>Update Stock Prices</h2>
+  <div id="admin-controls"></div>
+
+  <script src="firebase-config.js"></script>
+  <script>
+    const db = firebase.database();
+    const adminDiv = document.getElementById("admin-controls");
+
+    db.ref('stocks').on('value', snapshot => {
+      adminDiv.innerHTML = '';
+      const stocks = snapshot.val();
+      for (let symbol in stocks) {
+        const s = stocks[symbol];
+        adminDiv.innerHTML += `
+          <div>
+            <label>${symbol} (${s.name}): </label>
+            <input type="number" id="${symbol}" value="${s.price}" />
+            <button onclick="updatePrice('${symbol}')">Update</button>
+          </div>
+        `;
+      }
+    });
+
+    function updatePrice(symbol) {
+      const newPrice = parseFloat(document.getElementById(symbol).value);
+      db.ref('stocks/' + symbol + '/price').set(newPrice);
+    }
+  </script>
+</body>
+</html>
