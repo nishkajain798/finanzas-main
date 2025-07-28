@@ -11,7 +11,14 @@
   <button id="admin-toggle" onclick="toggleAdminMode()" style="display: none;">🛡️ Toggle Admin Mode</button>
   <h1>📈 SSE 5.0 </h1>
   <div id="stocks"></div>
-
+ <table id="stock-table">
+    <thead>
+      <tr>
+        <th>Company</th><th>Price (₹)</th><th>Change (%)</th><th>Buy</th><th>Sell</th><th>Adjust</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
   <script src="firebase-config.js"></script>
   <script src="app.js"></script>
 </body>
