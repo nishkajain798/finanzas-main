@@ -1,0 +1,26 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SSE Login</title>
+  <style>
+    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 100px; }
+    input, button { font-size: 1rem; padding: 10px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Enter Your Team Name</h2>
+  <input type="text" id="teamName" placeholder="e.g. Team Finanzas">
+  <button onclick="login()">Enter Simulator</button>
+
+  <script>
+    function login() {
+      const team = document.getElementById("teamName").value.trim();
+      if (!team) return alert("Please enter your team name.");
+      localStorage.setItem("teamName", team);
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
