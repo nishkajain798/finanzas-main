@@ -1,36 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SSE 5.0 </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+  <meta charset="UTF-8" />
+  <title>SSE</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button id="admin-toggle" onclick="toggleAdminMode()" style="display: none;">🛡️ Toggle Admin Mode</button>
-  <h1>📈 SSE 5.0 </h1>
-  <div id="stocks"></div>
- <table>
+<button id="admin-toggle" onclick="toggleAdminMode()" style="display: none;">🛡️ Toggle Admin Mode</button>
+  <h1>SSE 5.0</h1>
+  <table id="stock-table">
     <thead>
       <tr>
-        <th>Company</th> <th>Price (₹)</th> <th>Change (%)</th> <th>Buy</th> <th>Sell</th> <th>Adjust</th>
+        <th>Company</th><th>Price (₹)</th><th>Change (%)</th><th>Buy</th><th>Sell</th><th>Adjust</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
-    <h2>Your Portfolio</h2>
-  <div id="portfolio"> </div>
+
+  <h2>Your Portfolio</h2>
+  <div id="portfolio">
     <p>Cash: ₹<span id="cash">10000</span></p>
     <table id="portfolio-table">
-      <thead><tr>
-        <th>Stock</th> <th>Qty</th> <th>Price (₹)</th>
-      </tr></thead>
+      <thead><tr><th>Stock</th><th>Qty</th><th>	 Price (₹)</th></tr></thead>
       <tbody></tbody>
     </table>
-  
+  </div>
 
-  <script src="firebase-config.js"></script>
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
