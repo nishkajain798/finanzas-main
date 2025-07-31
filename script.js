@@ -1,4 +1,6 @@
 // ====== FIREBASE SETUP ======
+alert("Script.js loaded");
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
 
