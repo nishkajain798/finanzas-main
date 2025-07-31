@@ -1,3 +1,20 @@
+// ====== FIREBASE SETUP ======
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA0tMZldpyUvFXpm66-fAtcS4veNQ8Rl",
+  authDomain: "sse-stimulator.firebaseapp.com",
+  databaseURL: "https://sse-stimulator-default-rtdb.firebaseio.com",
+  projectId: "sse-stimulator",
+  storageBucket: "sse-stimulator.appspot.com",
+  messagingSenderId: "851332993194",
+  appId: "1:851332993194:web:d36cde5787c25bebe80bd3"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 // ====== SETUP ======
 let stocks = [
   { symbol: 'TCS', price: 300, lastChange: 0 },
@@ -71,12 +88,28 @@ function trade(symbol, isBuy) {
 
   updateTable();
 }
+function updateStockInFirebase(stock) {
+  const stockRef = ref(database, 'stocks/' + stock.symbol);
+  set(stockRef, {
+    symbol: stock.symbol,
+    price: stock.price,
+    lastChange: stock.lastChange
+  }).then(() => {
+    console.log(`${stock.symbol} updated in Firebase`);
+  }).catch((error) => {
+    console.error("Firebase update failed:", error);
+  });
+}
+
 
 // ====== PRICE ADJUSTMENT ======
 function adjustPrice(symbol, percentChange) {
   const stock = stocks.find(s => s.symbol === symbol);
   stock.lastChange = percentChange;
   stock.price += stock.price * percentChange / 100;
+
+  updateStockInFirebase(stock); // Firebase sync
+
   updateTable();
 }
 
