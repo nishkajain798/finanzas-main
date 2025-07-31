@@ -141,10 +141,20 @@ function listenForStockUpdates() {
 }
 
 // ====== INITIAL LOAD ======
+import { onValue } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+
 window.onload = () => {
-  listenForStockUpdates();  // 🔁 Syncs with Firebase
-  updateTable();            // Load initial UI
+  const stocksRef = ref(database, 'stocks');
+
+  onValue(stocksRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      stocks = Object.values(data);  // Load data from Firebase
+    }
+    updateTable();  // Render only after loading data
+  });
 };
+
 
 // ====== SECRET UNLOCK SHORTCUT ======
 document.addEventListener("keydown", function (e) {
