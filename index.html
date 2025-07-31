@@ -4,6 +4,30 @@
   <meta charset="UTF-8" />
   <title>SSE</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js"></script>
+
+<!-- Firebase Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js"></script>
+// Import the functions you need from the SDKs you need
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAOtMZldbpyUvFxp6m66-fAtc54veNeQRI",
+  authDomain: "sse-stimulator.firebaseapp.com",
+  databaseURL: "https://sse-stimulator-default-rtdb.firebaseio.com",
+  projectId: "sse-stimulator",
+  storageBucket: "sse-stimulator.firebasestorage.app",
+  messagingSenderId: "851332993194",
+  appId: "1:851332993194:web:d36cde5787c256b0eb80d3"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
 </head>
 <body>
 <button id="admin-toggle" onclick="toggleAdminMode()" style="display: none;">🛡️ Toggle Admin Mode</button>
