@@ -2,7 +2,7 @@
 alert("Script.js loaded");
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0tMZldpyUvFXpm66-fAtcS4veNQ8Rl",
@@ -18,16 +18,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 // ====== SETUP ======
-let stocks = [
-  { symbol: 'TCS', price: 300, lastChange: 0 },
-  { symbol: 'Lodha', price: 150, lastChange: 0 },
-{ symbol: 'HCL', price: 300, lastChange: 0 },
-{ symbol: 'Adani', price: 300, lastChange: 0 },
-{ symbol: 'Zomato', price: 700, lastChange: 0 },
-{ symbol: 'LIC', price: 110, lastChange: 0 },
-  { symbol: 'Reliance', price: 235, lastChange: 0 },
-];
-
+let stocks = [];
 let portfolio = {};
 let cash = 10000;
 let adminMode = false;
@@ -90,6 +81,7 @@ function trade(symbol, isBuy) {
 
   updateTable();
 }
+
 function updateStockInFirebase(stock) {
   const stockRef = ref(database, 'stocks/' + stock.symbol);
   set(stockRef, {
@@ -102,7 +94,6 @@ function updateStockInFirebase(stock) {
     console.error("Firebase update failed:", error);
   });
 }
-
 
 // ====== PRICE ADJUSTMENT ======
 function adjustPrice(symbol, percentChange) {
@@ -135,9 +126,22 @@ function toggleAdminMode() {
   btn.textContent = adminMode ? "🛡️ Admin Mode: ON" : "🛡️ Toggle Admin Mode";
 }
 
+// ====== REAL-TIME LISTENER ======
+function listenForStockUpdates() {
+  const stocksRef = ref(database, 'stocks');
+  onValue(stocksRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      stocks = Object.values(data);
+      updateTable();
+    }
+  });
+}
+
 // ====== INITIAL LOAD ======
 window.onload = () => {
-  updateTable();
+  listenForStockUpdates();  // 🔁 Syncs with Firebase
+  updateTable();            // Load initial UI
 };
 
 // ====== SECRET UNLOCK SHORTCUT ======
@@ -152,8 +156,8 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 // Expose key functions globally so HTML can access them
 window.trade = trade;
 window.adjustPrice = adjustPrice;
 window.toggleAdminMode = toggleAdminMode;
-
