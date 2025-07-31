@@ -4,37 +4,32 @@
   <meta charset="UTF-8" />
   <title>SSE</title>
   <link rel="stylesheet" href="style.css" />
+
   <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <!-- Firebase Realtime Database -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
 
-<!-- Firebase Realtime Database -->
-<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js"></script>
   <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAOtMZldbpyUvFxp6m66-fAtc54veNeQRI",
+      authDomain: "sse-stimulator.firebaseapp.com",
+      databaseURL: "https://sse-stimulator-default-rtdb.firebaseio.com",
+      projectId: "sse-stimulator",
+      storageBucket: "sse-stimulator.firebasestorage.app",
+      messagingSenderId: "851332993194",
+      appId: "1:851332993194:web:d36cde5787c256b0eb80d3"
+    };
 
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-  const firebaseConfig = {
-  apiKey: "AIzaSyAOtMZldbpyUvFxp6m66-fAtc54veNeQRI",
-  authDomain: "sse-stimulator.firebaseapp.com",
-  databaseURL: "https://sse-stimulator-default-rtdb.firebaseio.com",
-  projectId: "sse-stimulator",
-  storageBucket: "sse-stimulator.firebasestorage.app",
-  messagingSenderId: "851332993194",
-  appId: "1:851332993194:web:d36cde5787c256b0eb80d3"
-};
-
-<!-- Firebase App (Core SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-
-<!-- Firebase Realtime Database SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
-
-</script>
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
 
 </head>
 <body>
-<button id="admin-toggle" onclick="toggleAdminMode()" style="display: none;">🛡️ Toggle Admin Mode</button>
+  <button id="admin-toggle" onclick="toggleAdminMode()" style="display: none;">🛡️ Toggle Admin Mode</button>
   <h1>SSE 5.0</h1>
   <table id="stock-table">
     <thead>
