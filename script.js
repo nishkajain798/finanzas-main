@@ -152,3 +152,8 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+// Expose key functions globally so HTML can access them
+window.trade = trade;
+window.adjustPrice = adjustPrice;
+window.toggleAdminMode = toggleAdminMode;
+
