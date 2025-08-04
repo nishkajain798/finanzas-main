@@ -1,0 +1,11 @@
+{
+  "stocks": {
+    "TCS": { "price": 300, "change": 0 },
+    "Lodha": { "price": 150, "change": 0 },
+    "HCL": { "price": 300, "change": 0 },
+    "Adani": { "price": 300, "change": 0 },
+    "Zomato": { "price": 700, "change": 0 },
+    "LIC": { "price": 110, "change": 0 },
+    "Reliance": { "price": 235, "change": 0 }
+  }
+}

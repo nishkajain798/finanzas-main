@@ -1,26 +1,14 @@
-// ====== FIREBASE SETUP ======
-alert("Script.js loaded");
-console.log("Script.js is running - confirm!");
-
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA0tMZldpyUvFXpm66-fAtcS4veNQ8Rl",
-  authDomain: "sse-stimulator.firebaseapp.com",
-  databaseURL: "https://sse-stimulator-default-rtdb.firebaseio.com",
-  projectId: "sse-stimulator",
-  storageBucket: "sse-stimulator.appspot.com",
-  messagingSenderId: "851332993194",
-  appId: "1:851332993194:web:d36cde5787c25bebe80bd3"
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
 // ====== SETUP ======
-let stocks = [];
+let stocks = [
+  { symbol: 'TCS', price: 300, lastChange: 0 },
+  { symbol: 'Lodha', price: 150, lastChange: 0 },
+{ symbol: 'HCL', price: 300, lastChange: 0 },
+{ symbol: 'Adani', price: 300, lastChange: 0 },
+{ symbol: 'Zomato', price: 700, lastChange: 0 },
+{ symbol: 'LIC', price: 110, lastChange: 0 },
+  { symbol: 'Reliance', price: 235, lastChange: 0 },
+];
+
 let portfolio = {};
 let cash = 10000;
 let adminMode = false;
@@ -84,27 +72,11 @@ function trade(symbol, isBuy) {
   updateTable();
 }
 
-function updateStockInFirebase(stock) {
-  const stockRef = ref(database, 'stocks/' + stock.symbol);
-  set(stockRef, {
-    symbol: stock.symbol,
-    price: stock.price,
-    lastChange: stock.lastChange
-  }).then(() => {
-    console.log(`${stock.symbol} updated in Firebase`);
-  }).catch((error) => {
-    console.error("Firebase update failed:", error);
-  });
-}
-
 // ====== PRICE ADJUSTMENT ======
 function adjustPrice(symbol, percentChange) {
   const stock = stocks.find(s => s.symbol === symbol);
   stock.lastChange = percentChange;
   stock.price += stock.price * percentChange / 100;
-
-  updateStockInFirebase(stock); // Firebase sync
-
   updateTable();
 }
 
@@ -128,33 +100,10 @@ function toggleAdminMode() {
   btn.textContent = adminMode ? "🛡️ Admin Mode: ON" : "🛡️ Toggle Admin Mode";
 }
 
-// ====== REAL-TIME LISTENER ======
-function listenForStockUpdates() {
-  const stocksRef = ref(database, 'stocks');
-  onValue(stocksRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-      stocks = Object.values(data);
-      updateTable();
-    }
-  });
-}
-
 // ====== INITIAL LOAD ======
-import { onValue } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
-
 window.onload = () => {
-  const stocksRef = ref(database, 'stocks');
-
-  onValue(stocksRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-      stocks = Object.values(data);  // Load data from Firebase
-    }
-    updateTable();  // Render only after loading data
-  });
+  updateTable();
 };
-
 
 // ====== SECRET UNLOCK SHORTCUT ======
 document.addEventListener("keydown", function (e) {
@@ -168,8 +117,3 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
-
-// Expose key functions globally so HTML can access them
-window.trade = trade;
-window.adjustPrice = adjustPrice;
-window.toggleAdminMode = toggleAdminMode;
