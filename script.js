@@ -42,6 +42,8 @@ function updateTable() {
 
   document.getElementById('cash').textContent = cash.toFixed(2);
   renderPortfolio();
+  document.getElementById('wealth').textContent = calculateWealth().toFixed(2);
+
 }
 
 // ====== TRADING LOGIC ======
@@ -134,5 +136,6 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
