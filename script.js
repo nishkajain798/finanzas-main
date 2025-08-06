@@ -1,12 +1,12 @@
 // ====== SETUP ======
 let stocks = [
-  { symbol: 'TCS', price: 300, lastChange: 0 },
-  { symbol: 'Lodha', price: 150, lastChange: 0 },
-{ symbol: 'HCL', price: 300, lastChange: 0 },
-{ symbol: 'Adani', price: 300, lastChange: 0 },
-{ symbol: 'Zomato', price: 700, lastChange: 0 },
-{ symbol: 'LIC', price: 110, lastChange: 0 },
-  { symbol: 'Reliance', price: 235, lastChange: 0 },
+  { symbol: 'TCS', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Lodha', price: 150, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'HCL', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Adani', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Zomato', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'LIC', price: 1, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Reliance', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
 ];
 
 let portfolio = {};
@@ -21,7 +21,6 @@ function updateTable() {
   stocks.forEach(stock => {
     const row = document.createElement('tr');
 
-    // Add adjust buttons only if adminMode is ON
     const adjustButtons = adminMode
       ? `<td>
            <button onclick="adjustPrice('${stock.symbol}', 1)">🔺</button>
@@ -55,7 +54,11 @@ function trade(symbol, isBuy) {
 
   if (isBuy) {
     if (total > cash) return alert("Not enough cash!");
+    if (qty > stock.availableShares) return alert("Shares unavailable!");
+
     cash -= total;
+    stock.availableShares -= qty;
+
     if (!portfolio[symbol]) portfolio[symbol] = { qty: 0, avg: 0 };
     const p = portfolio[symbol];
     p.avg = (p.avg * p.qty + total) / (p.qty + qty);
@@ -64,8 +67,11 @@ function trade(symbol, isBuy) {
     if (!portfolio[symbol] || portfolio[symbol].qty < qty) {
       return alert("You don’t own that many shares.");
     }
+
     cash += total;
     portfolio[symbol].qty -= qty;
+    stock.availableShares += qty;
+
     if (portfolio[symbol].qty === 0) delete portfolio[symbol];
   }
 
