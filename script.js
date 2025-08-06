@@ -5,7 +5,7 @@ let stocks = [
   { symbol: 'HCL', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Adani', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Zomato', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'LIC', price: 1, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'LIC', price: 5, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Reliance', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
 ];
 
@@ -125,3 +125,4 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
