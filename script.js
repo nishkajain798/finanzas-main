@@ -99,6 +99,15 @@ function renderPortfolio() {
     tbody.appendChild(row);
   }
 }
+function calculateWealth() {
+  let wealth = cash;
+  for (let sym in portfolio) {
+    const stock = stocks.find(s => s.symbol === sym);
+    const p = portfolio[sym];
+    wealth += stock.price * p.qty;
+  }
+  return wealth;
+}
 
 // ====== ADMIN TOGGLE ======
 function toggleAdminMode() {
@@ -125,4 +134,5 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
