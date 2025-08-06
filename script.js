@@ -54,7 +54,9 @@ function trade(symbol, isBuy) {
 
   if (isBuy) {
     if (total > cash) return alert("Not enough cash!");
-    if (qty > stock.availableShares) return alert("Shares unavailable!");
+    if (qty > stock.availableShares) {
+      return alert(`Only ${stock.availableShares} shares are available.`);
+    }
 
     cash -= total;
     stock.availableShares -= qty;
