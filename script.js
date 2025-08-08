@@ -1,6 +1,6 @@
 // ====== SETUP ======
 let stocks = [
-  { symbol: 'TCS', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Mahindra Holidays & Resorts India Ltd.', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Lodha', price: 150, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'HCL', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Adani', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
@@ -136,6 +136,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
