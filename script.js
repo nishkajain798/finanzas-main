@@ -7,6 +7,9 @@ let stocks = [
   { symbol: 'Reliance Jio Infocomm Limited', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Adani Green Energy Limited', price: 5, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Hindustan Aeronautics Limited (HAL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Bharat Electronics Limited (BEL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Sun Pharmaceutical Industries Limited', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Bharat Petroleum Corporation Limited (BPCL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
 ];
 
 let portfolio = {};
@@ -136,6 +139,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
