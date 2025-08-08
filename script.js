@@ -6,14 +6,14 @@ let stocks = [
   { symbol: 'Bajaj Finance Limited', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Reliance Jio Infocomm Limited', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Adani Green Energy Limited', price: 5, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Hindustan Aeronautics Limited (HAL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Bharat Electronics Limited (BEL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Sun Pharmaceutical Industries Limited', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Hindustan Aeronautics Limited (HAL)', price: 200, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Bharat Electronics Limited (BEL)', price: 135, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Sun Pharmaceutical Industries Limited', price: 200, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Bharat Petroleum Corporation Limited (BPCL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Tata Consultancy Services (TCS)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'InterGlobe Aviation', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Zomato', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Tata Motors', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Tata Consultancy Services (TCS)', price: 25, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'InterGlobe Aviation', price: 23, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Zomato', price: 95, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Tata Motors', price: 35, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Hero MotoCorp', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
 ];
 
@@ -144,6 +144,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
