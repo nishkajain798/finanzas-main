@@ -4,9 +4,9 @@ let stocks = [
   { symbol: 'Yes Bank', price: 150, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'ITC', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Bajaj Finance Limited', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Zomato', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'LIC', price: 5, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Reliance', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Reliance Jio Infocomm Limited', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Adani Green Energy Limited', price: 5, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Hindustan Aeronautics Limited (HAL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
 ];
 
 let portfolio = {};
@@ -136,6 +136,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
