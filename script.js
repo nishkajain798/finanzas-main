@@ -1,9 +1,9 @@
 // ====== SETUP ======
 let stocks = [
   { symbol: 'Mahindra Holidays & Resorts India Ltd.', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Lodha', price: 150, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'HCL', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'Adani', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Yes Bank', price: 150, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'ITC', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'Bajaj Finance Limited', price: 300, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Zomato', price: 700, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'LIC', price: 5, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Reliance', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
@@ -136,6 +136,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
