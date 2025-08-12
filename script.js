@@ -11,7 +11,7 @@ let stocks = [
   { symbol: 'Sun Pharmaceutical Industries Limited', price: 200, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Bharat Petroleum Corporation Limited (BPCL)', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Tata Consultancy Services (TCS)', price: 25, lastChange: 0, availableShares: 1000, maxShares: 1000 },
-  { symbol: 'InterGlobe Aviation', price: 23, lastChange: 0, availableShares: 1000, maxShares: 1000 },
+  { symbol: 'InterGlobe Aviation', price: 3, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Zomato', price: 95, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Tata Motors', price: 35, lastChange: 0, availableShares: 1000, maxShares: 1000 },
   { symbol: 'Hero MotoCorp', price: 235, lastChange: 0, availableShares: 1000, maxShares: 1000 },
@@ -144,6 +144,7 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
 
 
 
